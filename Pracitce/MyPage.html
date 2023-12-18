@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/login-form.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="block_1">
+        <div class="box_1">
+          <div class="btn bt front_face">开始游戏</div>
+          <div class="back_face">
+            <div id="easy">简单</div>
+            <div id="medium">中等</div>
+            <div id="hard">困难</div>
+          </div>
+        </div>
+      </div>
+      <div class="block_2">
+        <div class="box_2">
+          <div class="btn bt2">教程</div>
+          <div class="info">
+            <h1>记忆纸牌游戏</h1>
+            <br />
+            <p>
+              单击方块以查看它们发现的符号，并尝试在其他卡片下方找到匹配的符号。一次发现两个匹配的符号，将它们从游戏中消除，在限时时间内消除所有方块，就可以赢得游戏。
+            </p>
+          </div>
+        </div>
+        <div class="box_3">
+          <div class="btn bt3">分数</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login">
+      <div class="login-box">
+        <svg
+          class="arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-arrow-left-square"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
+          />
+        </svg>
+        <h2>登录</h2>
+        <form>
+          <div class="user-box">
+            <input type="text" name="" required="" />
+            <label>用户名</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="" required="" />
+            <label>密码</label>
+          </div>
+          <a href="#" class="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            提交
+          </a>
+          <a href="#" class="sign_up">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            注册
+          </a>
+        </form>
+      </div>
+    </div>
+    
+    <div id="g"></div>
+    <div class="game">
+      <div class="easy">
+        <ul class="cards">
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+          <li class="card">
+            <div class="view front-view">
+              <img src="img/icons8-rainbow-six-siege-64.png" alt="" />
+            </div>
+            <div class="view back-view">
+              <img src="img/r6operators-icons-2.4.0/1.png" alt="card-img" />
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="medium"></div>
+      <div class="hard"></div>
+    </div>
+  </body>
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/MyJS.js"></script>
+  <script src="js/game.js"></script>
+</html>
