@@ -1,9 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>神经衰弱</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/login-form.css" />
   </head>
@@ -14,9 +15,9 @@
         <div class="box_1">
           <div class="btn bt front_face">开始游戏</div>
           <div class="back_face">
-            <div id="easy">简单</div>
-            <div id="medium">中等</div>
-            <div id="hard">困难</div>
+            <div id="easy" class="start">简单</div>
+            <div id="medium" class="start">中等</div>
+            <div id="hard" class="start">困难</div>
           </div>
         </div>
       </div>
@@ -48,7 +49,7 @@
           class="bi bi-arrow-left-square"
           viewBox="0 0 16 16"
         >
-          <path
+          <path id="return"
             fill-rule="evenodd"
             d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
           />
@@ -56,27 +57,21 @@
         <h2>登录</h2>
         <form>
           <div class="user-box">
-            <input type="text" name="" required="" />
+            <input type="text" id="uname" />
             <label>用户名</label>
           </div>
           <div class="user-box">
-            <input type="password" name="" required="" />
+            <input type="password" id="upwd" />
             <label>密码</label>
           </div>
-          <a href="#" class="submit">
+          <a href="#" class="submit" onclick="login()" style="display: block; margin: 0 50px; text-align: center;">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            提交
+            登录 / 注册
           </a>
-          <a href="#" class="sign_up">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            注册
-          </a>
+          <div id="alert" style="display: block; text-align: center; margin-top: 10px"></div>
         </form>
       </div>
     </div>
@@ -193,4 +188,5 @@
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/MyJS.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/request.js"></script>
 </html>
