@@ -165,7 +165,76 @@ html {
   }
 }
 
-/* 分数页面 */
+/* 排行榜 */
+.rank {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  z-index: -1;
+
+  &.fade-in {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  table {
+    overflow: hidden;
+    th,
+    td {
+      padding: 0.8em 0.5em;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    thead {
+      background-image: linear-gradient(
+        -225deg,
+        #ac32e4 0%,
+        #7918f2 48%,
+        #4801ff 100%
+      );
+      th {
+        color: #fff;
+      }
+    }
+
+    tbody {
+      background-image: linear-gradient(
+        -225deg,
+        #69eacb 0%,
+        #eaccf8 48%,
+        #6654f1 100%
+      );
+      tr {
+        transition: all 1s ease-in-out;
+        &.slide-out {
+          transform: rotateX(90deg);
+        }
+      }
+      .top-1 {
+        animation-delay: 0s;
+        color: #444;
+        text-shadow: 0 0 0 #444;
+        animation: top-1_font 2s ease-in-out infinite alternate;
+      }
+      .top-2 {
+        animation-delay: 0s;
+        color: #444;
+        text-shadow: 0 0 0 #444;
+        animation: top-2_font 2s ease-in-out infinite alternate;
+      }
+      .top-3 {
+        animation-delay: 0s;
+        color: #444;
+        text-shadow: 0 0 0 #444;
+        animation: top-3_font 2s ease-in-out infinite alternate;
+      }
+    }
+  }
+}
 
 /* 登录 */
 .login {
@@ -176,8 +245,8 @@ html {
     z-index: 2;
   }
 }
-/* 游戏 */
 
+/* 游戏 */
 .game {
   position: absolute;
   width: 600px;
@@ -275,12 +344,20 @@ html {
     height: 5px;
     position: absolute;
     top: 0;
-    background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+    background-image: linear-gradient(
+      60deg,
+      #3d3393 0%,
+      #2b76b9 37%,
+      #2cacd1 65%,
+      #35eb93 100%
+    );
     z-index: 1;
   }
 }
 
 /* 动画 */
+
+/* 牌不匹配动画 */
 @keyframes shake {
   0%,
   100% {
@@ -299,6 +376,7 @@ html {
     transform: translateX(8px);
   }
 }
+/* 时间轴动画 */
 @-webkit-keyframes timer {
   100% {
     width: 100%;
@@ -317,5 +395,24 @@ html {
 @keyframes timer {
   100% {
     width: 100%;
+  }
+}
+/* 发光字体 */
+@keyframes top-1_font {
+  to {
+    text-shadow: 0 0 5px #ffed00, 0 0 5px #ffed00, 0 0 10px #ffed00;
+    color: #ffed00;
+  }
+}
+@keyframes top-2_font {
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 10px #fff;
+    color: #fff;
+  }
+}
+@keyframes top-3_font {
+  to {
+    text-shadow: 0 0 5px #b87333, 0 0 5px #b87333, 0 0 10px #b87333;
+    color: #b87333;
   }
 }

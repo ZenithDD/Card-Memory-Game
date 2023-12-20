@@ -1,7 +1,8 @@
 $(document).ready(function () {
   var bt1,
     bt2,
-    bt3 = false;
+    rank,
+    loginIn = false;
   // 按钮功能
   $(".front_face").click(function () {
     if (bt2) {
@@ -12,18 +13,8 @@ $(document).ready(function () {
     $(".back_face").addClass("fade-in");
     bt1 = true;
   });
-  $("#easy").click(function (e) {
-    var timer = 50000;
-    var startTime = $.now();
-    $(".container").addClass("fade-out");
-    $(".game").addClass("fade-in");
-    $('<i class="timer"></i>')
-      .prependTo("#g")
-      .css({
-        animation: "timer " + timer + "ms linear",
-      });
-  });
 
+  // 教程
   $(".box_2").click(function () {
     if (bt1) {
       $(".front_face").removeClass("fade-out");
@@ -37,20 +28,47 @@ $(document).ready(function () {
       bt2 = true;
     }
   });
+  // 分数
   $(".box_3").click(function () {
     if (bt1) {
       $(".front_face").removeClass("fade-out");
       $(".back_face").removeClass("fade-in");
     }
-    if (!bt3) {
+    if (!loginIn) {
       $(".login").addClass("fade-in");
       $(".btn").addClass("fade-out");
       $(".container").css("pointer-events", "none");
+    } else {
+      rank = true;
+      $(".container").addClass("fade-out");
+      $(".container").css("pointer-events", "none");
+      $(".rank").addClass("fade-in");
+      const rows = Array.from(document.querySelectorAll("tr"));
+
+      function slideOut(row) {
+        row.classList.add("slide-out");
+      }
+
+      function slideIn(row, index) {
+        setTimeout(function () {
+          row.classList.remove("slide-out");
+        }, (index + 5) * 200);
+      }
+
+      rows.forEach(slideOut);
+
+      rows.forEach(slideIn);
     }
   });
+
   $(".arrow").click(function () {
     $(".login").removeClass("fade-in");
     $(".btn").removeClass("fade-out");
     $(".container").css("pointer-events", "all");
+  });
+  $(".rank").click(function () {
+    $(".container").removeClass("fade-out");
+    $(".container").css("pointer-events", "all");
+    $(".rank").removeClass("fade-in");
   });
 });
