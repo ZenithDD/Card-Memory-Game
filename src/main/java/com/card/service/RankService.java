@@ -21,7 +21,7 @@ public class RankService {
 
     public List<Rank> query() {
         List<Rank> ranks = this.rankDao.query();
-        ranks.sort(Comparator.comparingInt(Rank::getTimeCost).reversed());
+        ranks.sort(Comparator.comparingInt(Rank::getTimeCost));
         List<String> exist = new ArrayList<>();
         List<Rank> res = new ArrayList<>();
         for (Rank i: ranks) {

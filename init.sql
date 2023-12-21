@@ -17,8 +17,8 @@ DROP TABLE IF EXISTS `rank`;
 CREATE TABLE `rank` (
                           `ID` bigint(20) AUTO_INCREMENT NOT NULL COMMENT '主键',
                           `USERNAME` varchar(50) NOT NULL COMMENT '用户名',
-                          `DIFFICULTY` bigint(10) NOT NULL COMMENT '难度',
-                          `TIME_COST` bigint(10) NOT NULL COMMENT '用时',
+                          `DIFFICULTY` INT NOT NULL COMMENT '难度',
+                          `TIME_COST` INT NOT NULL COMMENT '用时',
                           `TIMESTAMP` bigint(10) NOT NULL COMMENT '时间',
                           PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;

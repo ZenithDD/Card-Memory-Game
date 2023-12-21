@@ -1,4 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.card.entity.Rank" %>
+<%@ page import="java.util.List" %>
+<!-- <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +12,7 @@
   </head>
 
   <body>
+    <!-- 主页 -->
     <div class="container">
       <div class="block_1">
         <div class="box_1">
@@ -33,23 +36,23 @@
           </div>
         </div>
         <div class="box_3">
-          <div class="btn bt3">分数</div>
+          <div class="btn bt3">登录</div>
         </div>
       </div>
     </div>
-
+    <!-- 登录框 -->
     <div class="login">
       <div class="login-box">
         <svg
-          class="arrow"
+          class="arrow bi bi-arrow-left-square"
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-arrow-left-square"
           viewBox="0 0 16 16"
         >
-          <path id="return"
+          <path
+            id="return"
             fill-rule="evenodd"
             d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
           />
@@ -64,19 +67,28 @@
             <input type="password" id="upwd" />
             <label>密码</label>
           </div>
-          <a href="#" class="submit" onclick="login()" style="display: block; margin: 0 50px; text-align: center;">
+          <a
+            href="#"
+            id="loginBtn"
+            class="submit"
+            style="display: block; margin: 0 50px; text-align: center"
+          >
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             登录 / 注册
           </a>
-          <div id="alert" style="display: block; text-align: center; margin-top: 10px"></div>
+          <div
+            id="alert"
+            style="display: block; text-align: center; margin-top: 10px"
+          ></div>
         </form>
       </div>
     </div>
-    
-    <div id="g"></div>
+    <!-- 时间轴 -->
+    <div id="g" class="bar"></div>
+    <!-- 游戏 -->
     <div class="game">
       <div class="easy">
         <ul class="cards">
@@ -184,9 +196,24 @@
       <div class="medium"></div>
       <div class="hard"></div>
     </div>
+    <!-- 排行榜 -->
+    <div class="rank">
+      <table class="zigzag">
+        <thead>
+          <tr>
+            <th>玩家</th>
+            <th>难度</th>
+            <th>最快完成时间</th>
+            <th>挑战时间</th>
+          </tr>
+        </thead>
+        <tbody id="rankBoard">
+
+        </tbody>
+      </table>
+    </div>
   </body>
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="js/MyJS.js"></script>
   <script src="js/game.js"></script>
-  <script src="js/request.js"></script>
 </html>

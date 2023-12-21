@@ -1,5 +1,6 @@
 package com.card.action;
 
+import com.alibaba.fastjson.JSONObject;
 import com.card.entity.Rank;
 import com.card.service.RankService;
 
@@ -28,22 +29,10 @@ public class RankServlet extends HttpServlet {
     private void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        String currentPage = (String) request.getParameter("currentPage");
-        if (currentPage == null) currentPage = "1";
-        String pageSize = (String) request.getParameter("pageSize");
-        if (pageSize == null) pageSize = "5";
-        int curPage = Integer.parseInt(currentPage);
-        int size = Integer.parseInt(pageSize);
-
         RankService rankService = new RankService();
-        int rankCount = rankService.getRankCount();
-        int pageCount = rankCount % size == 0 ? rankCount / size : rankCount / size + 1;
-        if (curPage < 1) curPage = 1;
-        else if (curPage > pageCount) curPage = pageCount;
-        List<Rank> rankList = rankService.queryPart(size * (curPage - 1), size);
+        List<Rank> rankList = rankService.query();
 
-        request.setAttribute("rankList", rankList);
         PrintWriter pw = response.getWriter();
-        pw.print("200");
+        pw.print(JSONObject.toJSON(rankList));
     }
 }
