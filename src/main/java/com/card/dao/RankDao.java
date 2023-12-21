@@ -29,7 +29,7 @@ public class RankDao {
         QueryRunner runner = new QueryRunner(DBUtil.getDataSource());
 
         try {
-            String sql = "select * from rank";
+            String sql = "select * from `rank`";
             List<Map<String, Object>> rankList = runner.query(sql, new MapListHandler());
 
             for (Map<String, Object> rankObj: rankList) {
