@@ -1,2 +1,7 @@
 # 无视文本
 *.txt
+target
+.git
+.idea
+.mvn
+.vscode
