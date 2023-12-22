@@ -5,6 +5,7 @@ let cardOne, cardTwo;
 let disableDeck = false;
 // 点击开始游戏
 $("#easy").click(function (e) {
+  var ongoing = true;
   var timer = 50000;
   var startTime = $.now();
   $(".container").addClass("fade-out");
@@ -14,7 +15,16 @@ $("#easy").click(function (e) {
     .css({
       animation: "timer " + timer + "ms linear",
     });
-
+  setTimeout(() => {
+    if (ongoing) {
+      $(".front_face").removeClass("fade-out");
+      $(".back_face").removeClass("fade-in");
+      $(".container").removeClass("fade-out");
+      $(".game").removeClass("fade-in");
+      $("i").remove();
+      return shuffleCard();
+    }
+  }, timer);
   // 翻卡
   function flipCard({ target: clickedCard }) {
     if (cardOne !== clickedCard && !disableDeck) {
@@ -33,29 +43,23 @@ $("#easy").click(function (e) {
   function matchCards(img1, img2) {
     if (img1 === img2) {
       matched++;
-      if (matched == 6) { // done
+      if (matched == 6) {
+        // done
         setTimeout(() => {
           $(".front_face").removeClass("fade-out");
           $(".back_face").removeClass("fade-in");
           $(".container").removeClass("fade-out");
           $(".game").removeClass("fade-in");
           $("i").remove();
+          ongoing = false;
           return shuffleCard();
         }, 1000);
 
         // 记录
         let endTime = $.now();
         record(1, endTime - startTime);
-
-      }else if ($.now()-startTime==0) { // timeout
-        setTimeout(() => {
-          $(".front_face").removeClass("fade-out");
-          $(".back_face").removeClass("fade-in");
-          $(".container").removeClass("fade-out");
-          $(".game").removeClass("fade-in");
-          $("i").remove();
-          return shuffleCard();
-        }, 1000);
+      } else if ($.now() - startTime == 0) {
+        // timeout
       }
 
       cardOne.removeEventListener("click", flipCard);
@@ -101,7 +105,8 @@ $("#easy").click(function (e) {
     var xhr = new XMLHttpRequest();
     xhr.open("post", "record-servlet", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var data = ("uname=" + uname + "&difficulty=" + difficulty + "&timeCost=" + timeCost);
+    var data =
+      "uname=" + uname + "&difficulty=" + difficulty + "&timeCost=" + timeCost;
     xhr.send(data);
   }
 });

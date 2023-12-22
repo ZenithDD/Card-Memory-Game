@@ -7,8 +7,7 @@ $(document).ready(function () {
   $(".front_face").click(function () {
     if (!loginIn) {
       window.alert("请先登录");
-    }
-    else {
+    } else {
       if (bt2) {
         $(".box_2").removeClass("is-flipped");
         bt2 = false;
@@ -49,16 +48,17 @@ $(document).ready(function () {
       $(".container").css("pointer-events", "none");
       $(".rank").addClass("fade-in");
       const rows = Array.from(document.querySelectorAll("tr"));
+      setTimeout(() => {
+        function slideOut(row) {
+          row.classList.add("slide-out");
+        }
 
-      function slideOut(row) {
-        row.classList.add("slide-out");
-      }
-
-      function slideIn(row, index) {
-        setTimeout(function () {
-          row.classList.remove("slide-out");
-        }, (index + 5) * 200);
-      }
+        function slideIn(row, index) {
+          setTimeout(function () {
+            row.classList.remove("slide-out");
+          }, (index + 5) * 200);
+        }
+      }, 200);
 
       rows.forEach(slideOut);
 
@@ -77,8 +77,6 @@ $(document).ready(function () {
     $(".rank").removeClass("fade-in");
   });
 
-
-
   // 登录
   $("#loginBtn").click(function () {
     let uname = $("#uname").val();
@@ -86,12 +84,10 @@ $(document).ready(function () {
 
     // 表单校验
     if (uname.length == 0) {
-      alertError("用户名不得为空")
-    }
-    else if (upwd.length == 0) {
-      alertError("密码不得为空")
-    }
-    else {
+      alertError("用户名不得为空");
+    } else if (upwd.length == 0) {
+      alertError("密码不得为空");
+    } else {
       alert.html("登录中...");
       alert.css("color", "grey");
 
@@ -103,31 +99,27 @@ $(document).ready(function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           let code = xhr.responseText;
           if (code == "201") {
-            alertSuccess("注册成功")
+            alertSuccess("注册成功");
             loginSuccess(uname);
             setTimeout(function () {
               $("#return").click();
             }, 1000);
-          }
-          else if (code == "200") {
-            alertSuccess("登录成功")
+          } else if (code == "200") {
+            alertSuccess("登录成功");
             loginSuccess(uname);
             setTimeout(function () {
               $("#return").click();
             }, 1000);
-          }
-          else if (code == "400") {
+          } else if (code == "400") {
             alert.html("登录失败，请检查密码");
             alert.css("color", "red");
-
           }
         }
       };
-      var data = ("uname=" + uname + "&upwd=" + upwd);
+      var data = "uname=" + uname + "&upwd=" + upwd;
       xhr.send(data);
     }
   });
-
 
   function queryRank() {
     let xhr = new XMLHttpRequest();
@@ -138,11 +130,13 @@ $(document).ready(function () {
         let board = $("#rankBoard");
         board.empty();
         data.forEach((v, i) => {
-          let tr = $("<tr></tr>")
-          tr.append($("<td class='top-" + (i + 1) + "'>" + v['username'] + "</td>"));
-          tr.append($("<td>" + formatDifficulty(v['difficulty']) + "</td>"));
-          tr.append($("<td>" + formatTimeCost(v['timeCost']) + "</td>"));
-          tr.append($("<td>" + formatTimestamp(v['timestamp']) + "</td>"));
+          let tr = $("<tr></tr>");
+          tr.append(
+            $("<td class='top-" + (i + 1) + "'>" + v["username"] + "</td>")
+          );
+          tr.append($("<td>" + formatDifficulty(v["difficulty"]) + "</td>"));
+          tr.append($("<td>" + formatTimeCost(v["timeCost"]) + "</td>"));
+          tr.append($("<td>" + formatTimestamp(v["timestamp"]) + "</td>"));
           board.append(tr);
         });
       }
@@ -150,12 +144,9 @@ $(document).ready(function () {
     xhr.send();
 
     function formatDifficulty(str) {
-      if (str == "1")
-        return "简单"
-      else if (str == "2")
-        return "中等"
-      else
-        return "困难"
+      if (str == "1") return "简单";
+      else if (str == "2") return "中等";
+      else return "困难";
     }
     function formatTimeCost(milliseconds) {
       let seconds = Math.floor(milliseconds / 1000);
@@ -165,14 +156,17 @@ $(document).ready(function () {
       return formattedTime;
     }
     function formatTimestamp(timestamp) {
-      let date = new Date(parseInt(timestamp) * 1000);  // 参数需要毫秒数，所以这里将秒数乘于 1000
-      Y = date.getFullYear() + '-';
-      M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-      D = date.getDate() + ' ';
-      h = date.getHours() + ':';
-      m = date.getMinutes() + ':';
+      let date = new Date(parseInt(timestamp) * 1000); // 参数需要毫秒数，所以这里将秒数乘于 1000
+      Y = date.getFullYear() + "-";
+      M =
+        (date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1) + "-";
+      D = date.getDate() + " ";
+      h = date.getHours() + ":";
+      m = date.getMinutes() + ":";
       s = date.getSeconds();
-      return Y+M+D+h+m+s;
+      return Y + M + D + h + m + s;
     }
   }
 
@@ -182,7 +176,6 @@ $(document).ready(function () {
     loginIn = true;
     $(".bt3").html("分数");
   }
-
 
   let alert = $("#alert");
   function alertError(msg) {
